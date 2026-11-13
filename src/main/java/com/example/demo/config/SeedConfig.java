@@ -1,0 +1,49 @@
+package com.example.demo.config;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import com.example.demo.model.CategoriaCnh;
+import com.example.demo.model.Motorista;
+import com.example.demo.repository.MotoristaRepository;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SeedConfig {
+
+    @Bean
+    CommandLineRunner seed(MotoristaRepository motoristaRepository) {
+        return args -> {
+            if (motoristaRepository.count() == 0) {
+                motoristaRepository.saveAll(List.of(
+                        motorista("Carlos Almeida", "11111111111", "90000000001", CategoriaCnh.E, LocalDate.now().plusYears(3), true),
+                        motorista("Ana Souza", "22222222222", "90000000002", CategoriaCnh.D, LocalDate.now().plusYears(2), true),
+                        motorista("Bruno Lima", "33333333333", "90000000003", CategoriaCnh.C, LocalDate.now().plusYears(1), true),
+                        motorista("Daniela Rocha", "44444444444", "90000000004", CategoriaCnh.B, LocalDate.now().plusYears(4), true),
+                        motorista("Eduardo Pires", "55555555555", "90000000005", CategoriaCnh.E, LocalDate.now().minusMonths(2), true),
+                        motorista("Fernanda Costa", "66666666666", "90000000006", CategoriaCnh.C, LocalDate.now().plusYears(2), false),
+                        motorista("Gustavo Reis", "77777777777", "90000000007", CategoriaCnh.D, LocalDate.now().plusMonths(8), true),
+                        motorista("Helena Martins", "88888888888", "90000000008", CategoriaCnh.E, LocalDate.now().plusYears(5), true),
+                        motorista("Igor Nunes", "99999999999", "90000000009", CategoriaCnh.B, LocalDate.now().plusYears(1), false),
+                        motorista("Juliana Dias", "10101010101", "90000000010", CategoriaCnh.C, LocalDate.now().plusYears(3), true),
+                        motorista("Lucas Ferreira", "12121212121", "90000000011", CategoriaCnh.D, LocalDate.now().plusYears(2), true),
+                        motorista("Marina Teixeira", "13131313131", "90000000012", CategoriaCnh.E, LocalDate.now().plusYears(4), true)));
+            }
+        };
+    }
+
+    private Motorista motorista(String nome, String cpf, String cnh, CategoriaCnh categoria,
+                                LocalDate validadeCnh, boolean ativo) {
+        Motorista m = new Motorista();
+        m.setNome(nome);
+        m.setCpf(cpf);
+        m.setCnh(cnh);
+        m.setCategoriaCnh(categoria);
+        m.setValidadeCnh(validadeCnh);
+        m.setAtivo(ativo);
+        m.setDataCadastro(LocalDate.now());
+        return m;
+    }
+}
