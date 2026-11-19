@@ -8,13 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class MotoristaMapper {
 
+    //Retorna uma entidade Motorista a partir de um MotoristaRequestDto
     public Motorista toEntity(MotoristaRequestDto dto) {
         Motorista motorista = new Motorista();
         atualizar(motorista, dto);
         return motorista;
     }
 
-    // Copia os campos do DTO para uma entidade existente (usado no PUT).
+    // Copia os campos do DTO para uma entidade existente
     public void atualizar(Motorista motorista, MotoristaRequestDto dto) {
         motorista.setNome(dto.nome());
         motorista.setCpf(dto.cpf());
@@ -23,6 +24,7 @@ public class MotoristaMapper {
         motorista.setValidadeCnh(dto.validadeCnh());
     }
 
+    //Retorna um MotoristaResponseDto a partir de uma entidade Motorista
     public MotoristaResponseDto toDto(Motorista motorista) {
         return new MotoristaResponseDto(
                 motorista.getId(),
@@ -32,6 +34,7 @@ public class MotoristaMapper {
                 motorista.getCategoriaCnh(),
                 motorista.getValidadeCnh(),
                 motorista.getAtivo(),
-                motorista.getDataCadastro());
+                motorista.getDataCadastro()
+        );
     }
 }
