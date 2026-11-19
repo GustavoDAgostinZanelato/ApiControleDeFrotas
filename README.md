@@ -148,8 +148,8 @@ classDiagram
 
 ```bash
 # 1. Clonar o repositório
-git clone <URL-DO-REPOSITORIO>
-cd ProjetoFinalBackend
+git clone https://github.com/GustavoDAgostinZanelato/ApiControleDeFrotas
+cd ApiControleDeFrotas
 
 # 2. Subir a aplicação (Windows)
 .\mvnw.cmd spring-boot:run
