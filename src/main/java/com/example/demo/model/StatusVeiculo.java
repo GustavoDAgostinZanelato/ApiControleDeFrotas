@@ -1,5 +1,5 @@
 package com.example.demo.model;
 
-public enum CategoriaCnh {
-    B, C, D, E
+public enum StatusVeiculo {
+    DISPONIVEL, EM_VIAGEM, EM_MANUTENCAO, INATIVO
 }
